@@ -39,10 +39,10 @@ float result(int K, float *resistance)
 
     for (int i = 0; i < K; i++)
     {
-        amount_square_diff = amount_square_diff + (resistance[i] - resistance_final2) * (resistance[i] - resistance_final2);
+        amount_square_diff += (resistance[i] - resistance_final2) * (resistance[i] - resistance_final2);
     }
 
-    float deviation = (squareRoot(amount_square_diff * 100000)) / (float)K;
+    float deviation = (squareRoot(amount_square_diff)) / (float)K;
 
     printf("%f+-%f  (cопротивление +- среднеквадратичное отклонение)\n", resistance_final, deviation);
 

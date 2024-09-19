@@ -4,7 +4,7 @@
 #include "input.h"
 
 int preparation(float resistance[]){
-    FILE *file_pointer = fopen("source/input5.txt", "r");
+    FILE *file_pointer = fopen("source/input.txt", "r");
     char buffer[50] = {};
     int cnt_of_researchers = 0;
     while (fgets(buffer, 50, file_pointer) != NULL)

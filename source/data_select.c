@@ -30,21 +30,23 @@ int data_select (int M, float resistance[])
 
     for (i = 0; i < M; i++)
     {
-        if (resistance_help[i] != 0)
+        int j = i;
+        while(resistance_help[j] == 0)
         {
-            resistance[i] = resistance_help[i];
+            j++;
         }
+        resistance[i] = resistance_help[j];
     }
 
     for (i = not_broken_elem_quant; i < M; i++)
     {
         resistance[i] = 0;
     }
-    /*printf("\n\n");
+    printf("\n\n");
     for (int i = 0; i < not_broken_elem_quant; i++)
     {
         printf("%lf\n", resistance[i]);
-    }*/
+    }
 
     return not_broken_elem_quant;
 }
