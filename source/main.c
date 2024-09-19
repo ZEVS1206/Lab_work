@@ -12,8 +12,9 @@ int main(){
     float resistance[100] = {};
     int cnt = preparation(resistance);
     int res_of_data_select = data_select(cnt, resistance);
+
     float resistance_final = result(res_of_data_select, resistance);
+
     int res_of_check = check(res_of_data_select, resistance, resistance_final);
-    printf("res_of_check-%d\n", res_of_check);
     return 0;
 }

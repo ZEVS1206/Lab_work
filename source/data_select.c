@@ -6,30 +6,31 @@
 int data_select (int M, float resistance[])
 {
     float resistance_help[100] = {};
-    double mid_res = 0;
+    float sr_ar = 0.0f;
+    float amount_of_res = 0.0f;
 
     int i = 0;
     for (i = 0; i < M; i++)
     {
-        mid_res += resistance[i];
+        amount_of_res += resistance[i];
         resistance_help[i] = resistance[i];
     }
-    mid_res /= (double)M;
-
+    sr_ar = amount_of_res / (float)M;
+    //printf("sr_ar-%lf\n", sr_ar);
     int not_broken_elem_quant = M;
     for (i = 0; i < M; i++)
     {
-        if (abs(resistance[i] - mid_res) > (double)0.03 * mid_res)
+        if (fabs(resistance[i] - sr_ar) > (float)0.03 * sr_ar)
         {
             not_broken_elem_quant--;
-            resistance_help[i] = -1;
+            resistance_help[i] = 0;
         }
     }
 
 
     for (i = 0; i < M; i++)
     {
-        if (resistance_help[i] != -1)
+        if (resistance_help[i] != 0)
         {
             resistance[i] = resistance_help[i];
         }
@@ -37,14 +38,14 @@ int data_select (int M, float resistance[])
 
     for (i = not_broken_elem_quant; i < M; i++)
     {
-        resistance[i] = -1;
+        resistance[i] = 0;
     }
-    // printf("AAAAA\n");
-    // for (i = 0; i < M; i++){
-    //     printf("%f\n", resistance[i]);
-    // }
-    // printf("AAAAAA\n");
-    // printf("nbeq-%d\nM-%d\n", not_broken_elem_quant, M);
+    /*printf("\n\n");
+    for (int i = 0; i < not_broken_elem_quant; i++)
+    {
+        printf("%lf\n", resistance[i]);
+    }*/
+
     return not_broken_elem_quant;
 }
 
